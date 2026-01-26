@@ -3,7 +3,19 @@
   "version": "0.1.0",
   "description": "Electron app to explore Weaviate collections and data",
   "main": "dist/main.js",
-  "author": "EKLAB",
+  "author": {
+    "name": "EKLAB",
+    "email": "edward.wong@eklab.xyz",
+    "url": "https://eklab.xyz"
+  },
+  "license": "MIT",
+  "keywords": [
+    "weaviate",
+    "collections",
+    "explorer",
+    "desktop",
+    "electron"
+  ],
   "scripts": {
     "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\" \"npm run electron:dev\"",
     "dev:main": "tsc -p tsconfig.main.json --watch",
