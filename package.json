@@ -1,0 +1,46 @@
+{
+  "name": "weviateview",
+  "version": "0.1.0",
+  "description": "Electron app to explore Weaviate collections and data",
+  "main": "dist/main.js",
+  "author": "EKLAB",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\" \"npm run electron:dev\"",
+    "dev:main": "tsc -p tsconfig.main.json --watch",
+    "dev:renderer": "vite",
+    "build": "npm run build:main && npm run build:renderer && npm run copy:icon",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "vite build",
+    "copy:icon": "node scripts/copy-icon.js",
+    "start": "electron .",
+    "electron:dev": "wait-on dist/main.js http://localhost:3000 && electron .",
+    "dist": "npm run build && electron-builder",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:linux": "npm run build && electron-builder --linux",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "@tanstack/react-table": "^8.20.6",
+    "electron-store": "11.0.2",
+    "weaviate-ts-client": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9",
+    "postcss": "^8",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5",
+    "vite": "^6.0.0",
+    "wait-on": "^8.0.1"
+  }
+}
