@@ -58,7 +58,10 @@ function createWindow() {
     mainWindow.loadURL('http://localhost:3000');
     mainWindow.webContents.openDevTools();
   } else {
-    mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'));
+    // In production, __dirname points to dist/ in the asar archive
+    // So renderer/index.html is at ../renderer/index.html relative to dist/main.js
+    const indexPath = path.join(__dirname, 'renderer', 'index.html');
+    mainWindow.loadFile(indexPath);
   }
 
   mainWindow.on('closed', () => {
