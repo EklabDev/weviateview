@@ -76,6 +76,8 @@ export function App() {
     if (tab === 'collections') {
       setView('collections');
       setSelectedCollection(null);
+      // Refetch collections when switching to Collections tab so list is always up to date
+      loadCollections();
     } else if (tab === 'search') {
       setView('search');
     }
